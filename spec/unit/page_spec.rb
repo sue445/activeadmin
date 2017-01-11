@@ -34,7 +34,8 @@ module ActiveAdmin
       end
 
       it "returns the singular, lowercase name" do
-        expect(config.resource_name.singular).to eq "chocolate i lØve you!"
+        expected_name = RUBY_VERSION >= "2.4.0" ? "chocolate i løve you!" : "chocolate i lØve you!"
+        expect(config.resource_name.singular).to eq expected_name
       end
     end
 
